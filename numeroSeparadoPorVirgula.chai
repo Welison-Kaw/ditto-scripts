@@ -1,0 +1,22 @@
+try {
+  var newString = "(";
+  var oldString = clip.GetAsciiString();
+
+  for (var i = 0; i < oldString.size(); ++i) {
+    if (oldString[i] == '\r') {
+      newString += ", ";
+    } else if (oldString[i] != '\n') {
+      newString += oldString[i];
+    }
+  }
+
+  var stringSize = newString.size;
+
+  newString = newString.substr(0, stringSize - 2) + ")";
+  clip.SetAsciiString(newString);
+
+  return false;
+}
+catch {
+  return true;
+}
