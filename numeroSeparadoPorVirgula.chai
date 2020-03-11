@@ -1,13 +1,18 @@
-var newString = "";
-var oldString = clip.GetAsciiString();
+try {
+  var newString = "";
+  var oldString = clip.GetAsciiString();
 
-for (var i = 0; i < oldString.size(); ++i) {
-   if (oldString[i] == '\r') {
-      newString += ", ";
-   } else if (oldString[i] != '\n') {
-      newString += oldString[i];
-   }
+  for (var i = 0; i < oldString.size(); ++i) {
+    if (oldString[i] == '\r') {
+      newString += ", ";
+    } else if (oldString[i] != '\n') {
+      newString += oldString[i];
+    }
+  }
+
+  clip.SetAsciiString(newString);
+  return false;
 }
-
-clip.SetAsciiString(newString);
-return false;
+catch {
+  return true;
+}
