@@ -1,0 +1,15 @@
+var newString = "";
+var oldString = clip.GetAsciiString();
+
+for (var i = 0; i < oldString.size(); ++i) {
+   if (oldString[i] == '\r') {
+      newString += "', '";
+   } else if (oldString[i] != '\n') {
+      newString += oldString[i];
+   }
+}
+
+newString = "'" + newString + "'"
+
+clip.SetAsciiString(newString);
+return false;
