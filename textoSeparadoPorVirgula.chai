@@ -1,5 +1,5 @@
 try {
-  var newString = "";
+  var newString = "('";
   var oldString = clip.GetAsciiString();
 
   for (var i = 0; i < oldString.size(); ++i) {
@@ -10,9 +10,11 @@ try {
     }
   }
 
-  newString = "'" + newString + "'"
+  var stringSize = newString.size;
 
+  newString = newString.substr(0, stringSize - 3) + ")";
   clip.SetAsciiString(newString);
+
   return false;
 }
 catch {
