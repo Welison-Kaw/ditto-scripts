@@ -2,11 +2,15 @@ try {
   var newString = "(";
   var oldString = clip.GetAsciiString();
 
+  if (oldString[oldString.size -1] != '\n') {
+    oldString += "\n"
+  }
+
   for (var i = 0; i < oldString.size(); ++i) {
-    if (oldString[i] == '\r') {
-      newString += ", ";
-    } else if (oldString[i] != '\n') {
+    if (oldString[i] != '\n') {
       newString += oldString[i];
+    } else {
+      newString += ", "
     }
   }
 
